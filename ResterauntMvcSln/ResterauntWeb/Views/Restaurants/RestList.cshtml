@@ -1,0 +1,29 @@
+﻿@Model IEnumerable<Rest.DAL.DTOs.RestaurantDto>;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+                      <table class="table">
+
+                          <tr>
+                              <th> Name</th>
+
+
+                          </tr>
+  
+                      @foreach (var rest in Model)
+{
+                      <tr style="border:2px solid black">
+                          <td>@rest.Name</td>
+                          <td>@rest.City</td>
+                          <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
+                      </tr>
+}
+
+
+
+
+
+                      </table>
+

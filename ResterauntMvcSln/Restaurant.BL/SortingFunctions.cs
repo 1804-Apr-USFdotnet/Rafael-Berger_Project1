@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Restaurant.BL
+namespace RestaurantBL
 {
    public class SortingFunctions
     {

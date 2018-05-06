@@ -12,13 +12,13 @@ namespace Rest.DAL
   public  class FeaturedRestaurants
     {
 
-        public IEnumerable<Restauraunt> FeaturedRest()
+        public IEnumerable<Restaurant> FeaturedRest()
         {
-            ICrud<Restauraunt> restCrud;
+            ICrud<Restaurant> restCrud;
             ICrud<Reviews> revCrud;
             IDbContext db;
             db = new ApplicationDbContext();
-            restCrud = new Crud<Restauraunt>(db);
+            restCrud = new Crud<Restaurant>(db);
             revCrud = new Crud<Reviews>(db);
             var featuredRest = restCrud.Table.OrderByDescending(x => x.AvgRating).Take(3);
             return featuredRest;

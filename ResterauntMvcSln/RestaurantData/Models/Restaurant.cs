@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantData.Models
 {
-   public class Restauraunt : BaseEntity
+   public class Restaurant : BaseEntity
     {
 
         [Key]

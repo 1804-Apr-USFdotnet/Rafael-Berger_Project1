@@ -155,11 +155,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="ViewModels\RestaurantVm.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ReviewsVm.cs" />
     <Compile Include="ViewModels\SortMethods.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +204,7 @@
     <Content Include="Views\Restaurants\RestList.cshtml" />
     <Content Include="Views\Restaurants\Details.cshtml" />
     <Content Include="Views\Shared\SearchResults.cshtml" />
+    <Content Include="Views\Reviews\AddReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -224,9 +227,9 @@
       <Project>{33c021d2-eadb-4840-9d09-83a176d20014}</Project>
       <Name>Rest.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Restaurant.BL\Restaurant.BL.csproj">
+    <ProjectReference Include="..\Restaurant.BL\RestaurantBL.csproj">
       <Project>{c2ff68dd-cb66-42d1-ad6b-e7291b9a9c9f}</Project>
-      <Name>Restaurant.BL</Name>
+      <Name>RestaurantBL</Name>
     </ProjectReference>
     <ProjectReference Include="..\RestaurantData\RestaurantData.csproj">
       <Project>{7753B54E-9C67-46F3-ACB0-3D151FC85BA9}</Project>

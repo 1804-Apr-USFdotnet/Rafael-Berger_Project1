@@ -35,7 +35,7 @@ namespace RestaurantData
             return base.SaveChanges();
         }
 
-        public DbSet<Restauraunt> Resteraunts { get; set; }
+        public DbSet<Restaurant> Resteraunts { get; set; }
         public DbSet<Reviews> Reviews { get; set; }
 
         IDbSet<TEntity> IDbContext.Set<TEntity>()

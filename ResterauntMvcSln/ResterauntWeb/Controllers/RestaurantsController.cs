@@ -11,21 +11,21 @@ using System.Web.Mvc;
 using RestaurantData;
 using Rest.DAL.DTOs;
 using System.Data.Entity;
-using ResterauntWeb.ViewModels;
+using RestaurantData.Models;
+
 
 namespace ResterauntWeb.Controllers
 {
     public class RestaurantsController : Controller
     {
 
-        ICrud<Restauraunt> crud;
-
-
+        ICrud<Restaurant> crud;
         IDbContext db;
+
         public RestaurantsController()
         {
             db = new ApplicationDbContext();
-            crud = new Crud<Restauraunt>(db);
+            crud = new Crud<Restaurant>(db);
 
         }
 
@@ -53,7 +53,16 @@ namespace ResterauntWeb.Controllers
         public ActionResult DisplaySearchResults(string searchText)
         {
             RestaurantVm rest = new RestaurantVm();
-           rest.SearchResults = crud.Table.Where(x => x.Name.StartsWith(searchText)).DefaultIfEmpty().ToList();
+            try
+            {
+                if (searchText != null && searchText != "")
+                rest.SearchResults = crud.Table.Where(x => x.Name.StartsWith(searchText)).DefaultIfEmpty().ToList();
+            }
+            catch
+            {
+
+
+            }
             return PartialView("SearchResults", rest);
         }
 

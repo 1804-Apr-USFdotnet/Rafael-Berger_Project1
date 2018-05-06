@@ -63,7 +63,7 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IDbContext.cs" />
     <Compile Include="Models\IEntity.cs" />
-    <Compile Include="Models\Restauraunt.cs" />
+    <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Reviews.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

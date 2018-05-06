@@ -17,6 +17,6 @@ namespace RestaurantData.Models
         [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
 
-        public virtual Restauraunt Restaurant { get; set; }
+        public virtual Reviews Restaurant { get; set; }
     }
 }

@@ -1,0 +1,23 @@
+﻿@model ResterauntWeb.ViewModels.ReviewsVm
+
+
+
+@using (Html.BeginForm("AddReview", "Reviews", FormMethod.Post)){
+
+
+    Html.LabelFor(m => m.review.Rating);
+    Html.TextBoxFor(m => m.review.Rating);
+
+
+
+    Html.LabelFor(m => m.review.Comments);
+    Html.TextBoxFor(m => m.review.Comments);
+
+
+<button class="btn btn-default" type="submit" value="Submit">submit </button>
+
+
+}
+
+
+

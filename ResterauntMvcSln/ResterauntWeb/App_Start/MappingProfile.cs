@@ -15,7 +15,7 @@ namespace ResterauntWeb.App_Start
         public MappingProfile()
         {
             // Domain to Dto
-            CreateMap<Restauraunt, RestaurantDto>();
+            CreateMap<Reviews, RestaurantDto>();
             CreateMap<Reviews, ReviewsDto>();
         }
 

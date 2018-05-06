@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantData.Models
 {
-   public class Reviews
+   public class Reviews : BaseEntity
     {
         [Key]
         public int Id { get; set; }

@@ -51,8 +51,18 @@
     <Compile Include="Migrations\201805032025182_Initial.Designer.cs">
       <DependentUpon>201805032025182_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805041537549_Added Average.cs" />
+    <Compile Include="Migrations\201805041537549_Added Average.Designer.cs">
+      <DependentUpon>201805041537549_Added Average.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805052221009_Application context change.cs" />
+    <Compile Include="Migrations\201805052221009_Application context change.Designer.cs">
+      <DependentUpon>201805052221009_Application context change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\IDbContext.cs" />
+    <Compile Include="Models\IEntity.cs" />
     <Compile Include="Models\Restauraunt.cs" />
     <Compile Include="Models\Reviews.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +74,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805032025182_Initial.resx">
       <DependentUpon>201805032025182_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805041537549_Added Average.resx">
+      <DependentUpon>201805041537549_Added Average.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805052221009_Application context change.resx">
+      <DependentUpon>201805052221009_Application context change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

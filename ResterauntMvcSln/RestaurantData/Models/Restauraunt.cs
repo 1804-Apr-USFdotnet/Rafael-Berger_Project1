@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantData.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantData.Models
 {
-   public class Restauraunt
+   public class Restauraunt : BaseEntity
     {
 
         [Key]
@@ -25,12 +26,13 @@ namespace RestaurantData.Models
         [DataType(DataType.PostalCode)]
 
         public string Zipcode { get; set; }
+   
 
 
 
         public virtual ICollection<Reviews> reviews { get; set; }
 
-        [NotMapped]
+    //    [NotMapped]
         public int? AvgRating { get; set; }
         public DateTime dateTime { get; set; }
     }

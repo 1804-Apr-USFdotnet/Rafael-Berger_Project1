@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rest.DAL.Repositories
+namespace Rest.DAL
 {
-    interface IDbContext
+  public  class SortingFunctions
     {
+
+
+
+
+        
     }
 }

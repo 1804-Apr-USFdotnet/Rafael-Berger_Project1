@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using RestaurantData.Models;
 
 namespace Rest.DAL.DTOs
 {
-    public class RestaurantDto
+    public class RestaurantDto : BaseEntity
     {
 
         public int Id { get; set; }
@@ -26,7 +27,7 @@ namespace Rest.DAL.DTOs
 
 
 
-       // public virtual ICollection<Reviews> reviews { get; set; }
+       public virtual ICollection<ReviewsDto> reviews { get; set; }
 
         [NotMapped]
         public int? AvgRating { get; set; }

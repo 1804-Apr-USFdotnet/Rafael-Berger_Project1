@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantData", "Restauran
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rest.DAL", "Rest.DAL\Rest.DAL.csproj", "{33C021D2-EADB-4840-9D09-83A176D20014}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.BL", "Restaurant.BL\Restaurant.BL.csproj", "{C2FF68DD-CB66-42D1-AD6B-E7291B9A9C9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{33C021D2-EADB-4840-9D09-83A176D20014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33C021D2-EADB-4840-9D09-83A176D20014}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33C021D2-EADB-4840-9D09-83A176D20014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2FF68DD-CB66-42D1-AD6B-E7291B9A9C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FF68DD-CB66-42D1-AD6B-E7291B9A9C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FF68DD-CB66-42D1-AD6B-E7291B9A9C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FF68DD-CB66-42D1-AD6B-E7291B9A9C9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

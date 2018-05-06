@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantData.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Rest.DAL
 {
-    interface Icrud<T>
+   public interface ICrud<T> where T : BaseEntity
     {
         // T GetDbContext { get; }
-        IEnumerable<T> GetAll(string query);
-        T GetById(int id);
-        void Add(T entity);
-
+        void Insert(T entity);
+        void Update(T entity);
+        void Delete(T entity);
+        IQueryable<T> Table { get; }
 
     }
 }

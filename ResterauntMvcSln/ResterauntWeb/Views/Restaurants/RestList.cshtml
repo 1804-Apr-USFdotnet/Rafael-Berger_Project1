@@ -1,29 +1,62 @@
-﻿@Model IEnumerable<Rest.DAL.DTOs.RestaurantDto>;
+﻿@model ResterauntWeb.ViewModels.RestaurantVm
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-                      <table class="table">
+<table class="table">
 
-                          <tr>
-                              <th> Name</th>
+    <tr>
+        <th> Name</th>
+    </tr>
+
+    @foreach (var rest in Model.restaurants)
+    {
+        <tr style="border:2px solid black">
+            <td>@rest.Name</td>
+            <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
+        </tr>
+    }
+
+</table>
 
 
-                          </tr>
-  
-                      @foreach (var rest in Model)
-{
-                      <tr style="border:2px solid black">
-                          <td>@rest.Name</td>
-                          <td>@rest.City</td>
-                          <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
-                      </tr>
+@Html.DropDownListFor(x => x.SelectedMethod, Model.SortMethods, new { id = "dropdown" })
+
+<br />
+<br />
+
+<button id="search"> Search</button>
+<div id="searchResults">
+
+</div>
+<input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />
+
+@section Scripts{
+
+
+    <script>
+
+var url = '@Url.Action("DisplaySearchResults", "Restaurants")';
+        $('#search').click(function () {
+    //$("#Keyword").keydown(function ()    {
+  var SearchString = $('#Keyword').val();
+  $('#searchResults').load(url, { searchText: SearchString });
+        })
+
+        $(document).ready(function () {
+            $("#dropdown").change(function () {
+                $.ajax({
+                    type: 'Get',
+                    url: '@Url.Action("GetSortMethod", "Restaurants")',
+                    data:{ MV: $('#dropdown').val() },
+                    sucess: {
+
+                    }
+        });
+        })
+})
+
+    </script>
+
 }
-
-
-
-
-
-                      </table>
-

@@ -107,6 +107,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rest.DAL\Rest.DAL.csproj">
+      <Project>{33C021D2-EADB-4840-9D09-83A176D20014}</Project>
+      <Name>Rest.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestaurantData\RestaurantData.csproj">
+      <Project>{7753B54E-9C67-46F3-ACB0-3D151FC85BA9}</Project>
+      <Name>RestaurantData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ResterauntWeb\ResterauntWeb.csproj">
       <Project>{B310759B-3540-48EF-8139-341F502C3A0C}</Project>
       <Name>ResterauntWeb</Name>

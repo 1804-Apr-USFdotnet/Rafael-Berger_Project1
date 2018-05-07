@@ -35,21 +35,16 @@ namespace RestaurantData.Migrations
                         Created = c.DateTime(),
                         Modified = c.DateTime(),
                         Restaurant_Id = c.Int(),
-                        Restaurant_Id1 = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Reviews", t => t.Restaurant_Id)
-                .ForeignKey("dbo.Restaurants", t => t.Restaurant_Id1)
-                .Index(t => t.Restaurant_Id)
-                .Index(t => t.Restaurant_Id1);
+                .ForeignKey("dbo.Restaurants", t => t.Restaurant_Id)
+                .Index(t => t.Restaurant_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Reviews", "Restaurant_Id1", "dbo.Restaurants");
-            DropForeignKey("dbo.Reviews", "Restaurant_Id", "dbo.Reviews");
-            DropIndex("dbo.Reviews", new[] { "Restaurant_Id1" });
+            DropForeignKey("dbo.Reviews", "Restaurant_Id", "dbo.Restaurants");
             DropIndex("dbo.Reviews", new[] { "Restaurant_Id" });
             DropTable("dbo.Reviews");
             DropTable("dbo.Restaurants");

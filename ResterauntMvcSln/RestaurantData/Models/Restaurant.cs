@@ -30,7 +30,7 @@ namespace RestaurantData.Models
 
 
 
-        public virtual ICollection<Reviews> reviews { get; set; }
+        public  ICollection<Reviews> reviews { get; set; }
 
     //    [NotMapped]
         public int? AvgRating { get; set; }

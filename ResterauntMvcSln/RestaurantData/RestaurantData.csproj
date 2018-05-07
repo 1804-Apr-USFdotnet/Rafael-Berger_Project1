@@ -47,9 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201805061935046_Initial.cs" />
-    <Compile Include="Migrations\201805061935046_Initial.Designer.cs">
-      <DependentUpon>201805061935046_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201805071456216_Initial.cs" />
+    <Compile Include="Migrations\201805071456216_Initial.Designer.cs">
+      <DependentUpon>201805071456216_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -57,6 +57,7 @@
     <Compile Include="Models\IEntity.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Reviews.cs" />
+    <Compile Include="Models\SearchAndSortRestaurants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,8 +65,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805061935046_Initial.resx">
-      <DependentUpon>201805061935046_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805071456216_Initial.resx">
+      <DependentUpon>201805071456216_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

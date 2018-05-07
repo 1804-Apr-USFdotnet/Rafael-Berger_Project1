@@ -22,6 +22,6 @@ namespace RestaurantData.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? Modified { get; set; }
 
-        public virtual Reviews Restaurant { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 }

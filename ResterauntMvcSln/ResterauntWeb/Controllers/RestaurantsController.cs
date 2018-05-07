@@ -29,8 +29,8 @@ namespace ResterauntWeb.Controllers
 
         }
 
-
-        public ActionResult sortedRestaurants(RestaurantVm mv)
+        [HttpPost]
+        public ActionResult GetSortMethod(RestaurantVm mv)
         {
             string SelectedValue = mv.SelectedMethod;
 
@@ -47,22 +47,12 @@ namespace ResterauntWeb.Controllers
             //}
             return View(mv);
 
-
         }
 
-        public ActionResult DisplaySearchResults(string searchText)
+        public ActionResult DisplaySearchResults(List<Restaurant> Rest)
         {
             RestaurantVm rest = new RestaurantVm();
-            try
-            {
-                if (searchText != null && searchText != "")
-                rest.SearchResults = crud.Table.Where(x => x.Name.StartsWith(searchText)).DefaultIfEmpty().ToList();
-            }
-            catch
-            {
-
-
-            }
+        
             return PartialView("SearchResults", rest);
         }
 
@@ -79,7 +69,7 @@ namespace ResterauntWeb.Controllers
             var listItems = restVm.SortMethods;
       
 
-            restVm.restaurants = crud.Table.ToList();
+            restVm.restaurants = crud.Table.Include(x => x.reviews).ToList();
             restVm.Featuredrestaurants = featuredRestaurants.FeaturedRest().ToList();
 
 

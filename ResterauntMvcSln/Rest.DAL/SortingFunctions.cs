@@ -1,4 +1,6 @@
-﻿using RestaurantData.Models;
+﻿using Rest.DAL.Repositories;
+using RestaurantData;
+using RestaurantData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,23 +12,64 @@ namespace Rest.DAL
   public  class SortingFunctions
     {
 
-        public Restaurant SortByCity()
-        {
+        ICrud<Restaurant> crud;
+        ICrud<Reviews> reviewCrud;
+        IDbContext db;
+  
 
+        public SortingFunctions()
+        {
+            
+            db = new ApplicationDbContext();
+            crud = new Crud<Restaurant>(db);
 
         }
-        public Restaurant SortByMostReviewed()
-        {
-
-
-        }
-        public Restaurant SortByNameAscending()
-        {
-
-
-        }
-
 
         
+ 
+        public List<Restaurant> FilterByCity(string userInput, List<Restaurant> restList)
+        {
+            List<Restaurant> rest = new List<Restaurant>();
+            try
+            {
+
+            return restList.Where(x => x.City.StartsWith(userInput)).ToList();
+
+            }
+            catch
+            {
+
+
+            }
+            return rest;
+
+        }
+        //public List<Restaurant> SortByMostReviewed()
+        //{
+        //    List<Restaurant> rest = new List<Restaurant>();
+        //    List<Reviews> reviewIds = new List<Reviews>();
+        //    try
+        //    {
+
+        //       var  reviewId = reviewCrud.Table.GroupBy(x => x.Restaurant.Id, r => r.Rating)
+        //            .OrderByDescending(m => m.Count()).SelectMany(m => m).ToList();
+
+        //    }
+        //    catch
+        //    {
+
+
+        //    }
+        //    return rest;
+
+        //}
+        //public Restaurant SortByNameAscending()
+        //{
+
+
+        //}
+
+
+
     }
 }

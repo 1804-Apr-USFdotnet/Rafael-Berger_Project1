@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Rest.DAL;
+using RestaurantData;
+using RestaurantData.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,21 +10,30 @@ using System.Web.Mvc;
 
 namespace RestaurantBL
 {
-   public class SortingFunctions
-    {
-        public static IEnumerable<SelectListItem> SortMethods()
+
+    public class SortFunctions {
+
+        ICrud<Restaurant> crud;
+        IDbContext db;
+
+        public SortFunctions()
         {
-            IList<SelectListItem> items = new List<SelectListItem>
-            {
-                new SelectListItem{Text = "City", Value = "B"},
-                new SelectListItem{Text = "Name", Value = "B"}
-           
+            db = new ApplicationDbContext();
+            crud = new Crud<Restaurant>(db);
 
-            };
-            return items;
         }
+        public List<Restaurant> GetUserInput(string mode, string input)
+        {
+            List<Restaurant> rest = new List<Restaurant>();
+            rest = crud.Table.ToList();
+            switch (mode)
+            {
+                case "City":
+                    return FilterByCity(input, rest);
 
+            }
+            return rest;
 
-
+        }
     }
 }

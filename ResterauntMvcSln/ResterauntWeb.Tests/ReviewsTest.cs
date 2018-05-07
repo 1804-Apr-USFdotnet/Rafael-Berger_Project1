@@ -10,5 +10,13 @@ namespace ResterauntWeb.Tests
         public void TestMethod1()
         {
         }
+        [TestMethod]
+        public void TestAdd()
+        {
+        }
+        [TestMethod]
+        public void TestUpdate()
+        {
+        }
     }
 }

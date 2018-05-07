@@ -5,25 +5,32 @@
 }
 <button id="search"> Search</button>
 <div id="searchResults">
-
 </div>
 <input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />
 <table class="table">
 
+
+
+
+
     <tr>
         <th> Name</th>
+        <th> Average Rating</th>
     </tr>
 
     @foreach (var rest in Model.restaurants)
     {
         <tr style="border:2px solid black">
-            <td>@rest.Name</td>
+            <td>@rest.Name
+            </td>
             <td>@rest.AvgRating</td>
 
-            @foreach (var rev in rest.reviews)
+       <td>     @foreach (var rev in rest.reviews)
             {
                 @rev.Comments
             }
+
+            </td>
             <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
             <td>@Html.ActionLink("Add Review", "AddR", "Reviews", new { id = rest.Id }, null)</td>
             <td>@Html.ActionLink("Edit Resteraunt", "AddR", "Reviews", new { id = rest.Id }, null)</td>
@@ -32,11 +39,10 @@
 
 </table>
 
-
-@Html.DropDownListFor(x => x.SelectedMethod, Model.SortMethods, new { id = "dropdown" })
-
 <br />
 <br />
+
+<h1> Most  popular Restaurants</h1>
 
 
 
@@ -51,14 +57,17 @@ var url = '@Url.Action("DisplaySearchResults", "Restaurants")';
   var SearchString = $('#Keyword').val();
   $('#searchResults').load(url, { searchText: SearchString });
         })
-        $(document).ready(function () {
+
+
+
+
+ $(document).ready(function () {
             $("#dropdown").change(function () {
                 $.ajax({
                     type: 'Get',
                     url: '@Url.Action("GetSortMethod", "Restaurants")',
                     data:{ MV: $('#dropdown').val() },
                     sucess: {
-
                     }
         });
         })

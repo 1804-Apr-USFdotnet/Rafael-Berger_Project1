@@ -3,7 +3,11 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<button id="search"> Search</button>
+<div id="searchResults">
 
+</div>
+<input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />
 <table class="table">
 
     <tr>
@@ -14,7 +18,15 @@
     {
         <tr style="border:2px solid black">
             <td>@rest.Name</td>
+            <td>@rest.AvgRating</td>
+
+            @foreach (var rev in rest.reviews)
+            {
+                @rev.Comments
+            }
             <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
+            <td>@Html.ActionLink("Add Review", "AddR", "Reviews", new { id = rest.Id }, null)</td>
+            <td>@Html.ActionLink("Edit Resteraunt", "AddR", "Reviews", new { id = rest.Id }, null)</td>
         </tr>
     }
 
@@ -26,11 +38,7 @@
 <br />
 <br />
 
-<button id="search"> Search</button>
-<div id="searchResults">
 
-</div>
-<input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />
 
 @section Scripts{
 
@@ -38,12 +46,11 @@
     <script>
 
 var url = '@Url.Action("DisplaySearchResults", "Restaurants")';
-        $('#search').click(function () {
+     $('#search').click(function () {
     //$("#Keyword").keydown(function ()    {
   var SearchString = $('#Keyword').val();
   $('#searchResults').load(url, { searchText: SearchString });
         })
-
         $(document).ready(function () {
             $("#dropdown").change(function () {
                 $.ajax({

@@ -6,7 +6,7 @@ using ResterauntWeb.Controllers;
 namespace ResterauntWeb.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class RestaurantsTest
     {
         [TestMethod]
         public void TestMethod1()
@@ -22,6 +22,27 @@ namespace ResterauntWeb.Tests
             Assert.IsNotNull(result);
         //    Assert.IsNotNull(result.Model); // add additional checks on the Model
             Assert.IsTrue(string.IsNullOrEmpty(result.ViewName) || result.ViewName == "RestList");
+
+
+        }
+
+
+        [TestMethod]
+        public void TestSortByCity()
+        {
+
+
+        }
+
+        [TestMethod]
+        public void TestSortByName()
+        {
+
+
+        }
+        [TestMethod]
+        public void TestSortByMostReviewed()
+        {
 
 
         }

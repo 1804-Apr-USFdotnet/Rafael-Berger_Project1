@@ -35,20 +35,30 @@ namespace ResterauntWeb.Controllers
         {
             return View();
         }
+        public ActionResult AddR(int id)
+        {
+
+            Reviews review = new Reviews()
+            {
+                Id = id
+            };
+            return RedirectToAction("AddReview", review);
+        }
 
         // GET: Reviews/Create
-        public ActionResult AddReview()
+        public ActionResult AddReview(Reviews r)
         {
-            return View();
+
+            return View(r);
         }
 
         // POST: Reviews/Create
-        [HttpPost]
-        public ActionResult AddReview(ReviewsVm  reviewVm)
+        [HttpPost ]
+        public ActionResult AddRev(Reviews  review)
         {
             try
             {
-                Reviews review = new Reviews();
+            
                
                 ReviewsVm  reviewsVm = new ReviewsVm() {
                    
@@ -57,39 +67,39 @@ namespace ResterauntWeb.Controllers
                 if(ModelState.IsValid)
                 {
 
-                    review.Rating = reviewsVm.review.Rating;
+                
+                    crud.Insert(review);
                 }
 
 
                 // TODO: Add insert logic here
 
-                crud.Insert(review);
 
                 return RedirectToAction("Index");
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.Read();
+                Console.ReadLine();
 
                 return View();
             }
         }
 
         // GET: Reviews/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Reviews review)
         {
-            return View();
+            return View(review);
         }
 
         // POST: Reviews/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditReview(Reviews review )
         {
             try
             {
                 // TODO: Add update logic here
-
+                crud.Update(review);
                 return RedirectToAction("Index");
             }
             catch
@@ -106,12 +116,12 @@ namespace ResterauntWeb.Controllers
 
         // POST: Reviews/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Reviews review)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                crud.Delete(review);
                 return RedirectToAction("Index");
             }
             catch

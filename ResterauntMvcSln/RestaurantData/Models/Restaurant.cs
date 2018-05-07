@@ -34,6 +34,10 @@ namespace RestaurantData.Models
 
     //    [NotMapped]
         public int? AvgRating { get; set; }
-        public DateTime dateTime { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime? Created { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime? Modified { get; set; }
+
     }
 }

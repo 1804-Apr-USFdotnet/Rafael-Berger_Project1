@@ -9,6 +9,7 @@ namespace ResterauntWeb.ViewModels
 
         public List<Restaurant> restaurants { get; set; }
         public List<Restaurant> Featuredrestaurants { get; set; }
+        public List<Restaurant> LatestReviews { get; set; }
 
         public List<Restaurant> SearchResults { get; set; }
 

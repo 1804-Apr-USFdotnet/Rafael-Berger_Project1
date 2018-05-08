@@ -1,0 +1,26 @@
+﻿@model RestaurantData.Models.Restaurant
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-control">
+@using (Html.BeginForm("Add", "Restaurants", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+    <br />
+    @Html.LabelFor(m => m.City)
+    @Html.EditorFor(m => m.City)
+
+
+    @Html.LabelFor(m => m.phone)
+    @Html.EditorFor(m => m.phone)
+
+    @Html.LabelFor(m => m.State)
+    @Html.EditorFor(m => m.State)
+
+    <button  class="btn  btn-default" type="submit" value="submit"> submit</button>
+}
+    </div>
+
+    

@@ -31,17 +31,17 @@ namespace ResterauntWeb.Controllers
 
 
 
-      [HttpPost]
-        public List<Restaurant> GetUserInput(RestaurantVm mv , string input )
+        [HttpPost]
+        public List<Restaurant> GetUserInput(RestaurantVm mv, string input)
         {
-             SearchAndSortRestaurants Search = new SearchAndSortRestaurants();
+            SearchAndSortRestaurants Search = new SearchAndSortRestaurants();
 
             var mode = mv.SelectedMethod;
-            List < RestaurantVm > restvm = new List<RestaurantVm>();
+            List<RestaurantVm> restvm = new List<RestaurantVm>();
             var rest = crud.Table.ToList();
             try
             {
-                restvm = rest.ConvertAll(x => new RestaurantVm{ Id = x.Id });
+                restvm = rest.ConvertAll(x => new RestaurantVm { Id = x.Id });
 
                 switch (mode)
                 {
@@ -59,22 +59,22 @@ namespace ResterauntWeb.Controllers
             return rest;
 
         }
-    
 
 
-    [HttpPost]
+
+        [HttpPost]
         public string GetSortMethod(RestaurantVm mv, string input)
         {
             string SelectedValue = string.Empty;
             TempData["SortMethod"] = mv.SelectedMethod;
             try
             {
-                SelectedValue  = mv.SelectedMethod;
-          
-               
+                SelectedValue = mv.SelectedMethod;
+
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
 
@@ -86,7 +86,7 @@ namespace ResterauntWeb.Controllers
         public ActionResult SearchResults(RestaurantVm r)
         {
 
-            return PartialView("SearchResults", r); 
+            return PartialView("SearchResults", r);
         }
 
         public ActionResult Index(string option, string search)
@@ -95,7 +95,7 @@ namespace ResterauntWeb.Controllers
 
             if (option == "Name")
             {
-             
+
                 return View(crud.Table.Where(x => x.Name.StartsWith(search) || search == null).ToList());
             }
             else if (option == "City")
@@ -112,7 +112,7 @@ namespace ResterauntWeb.Controllers
         [HttpPost]
         public ActionResult SearchResult(RestaurantVm restvm)
         {
- 
+
             List<Restaurant> rest = new List<Restaurant>();
             SearchAndSortRestaurants Search = new SearchAndSortRestaurants();
             rest = crud.Table.ToList();
@@ -140,32 +140,53 @@ namespace ResterauntWeb.Controllers
 
             restVm.SortMethods = items;
             var listItems = restVm.SortMethods;
-      
+
 
             restVm.restaurants = crud.Table.Include(x => x.reviews).ToList();
-             var ListOfIds = featuredRestaurants.Top3Rest().ToList().Select(x => x.Id);
-            restVm.Featuredrestaurants =   crud.Table.Where(x => ListOfIds.Contains(x.Id)).ToList();
+            var ListOfIds = featuredRestaurants.Top3Rest().ToList().Select(x => x.Id);
+            restVm.Featuredrestaurants = crud.Table.Where(x => ListOfIds.Contains(x.Id)).ToList();
 
 
             return View(restVm);
         }
-
-        [HttpGet]
-        public ActionResult GetSortMethod(string selectedSort)
+        public ActionResult AddRestaurant()
         {
-            string SelectedValue = selectedSort;
-            return View(selectedSort);
+            Restaurant restaurant = new Restaurant();
+     
+            return View(restaurant);
+        }
+
+        [HttpPost]
+        public ActionResult Add(Restaurant rest)
+        {
+            try
+            {
+                crud.Insert(rest);
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            return RedirectToAction("RestList");
+
+        }
+        public ActionResult EditRestaurant(int restId)
+        {
+            Restaurant restaurant = new Restaurant();
+            restaurant = crud.Table.Where(x => x.Id == restId).FirstOrDefault();
+
+            return View(restaurant);
         }
 
 
-
         [HttpPost]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Restaurant restaurant)
         {
-            
+
             try
             {
-
+                crud.Update(restaurant);
 
 
             }
@@ -177,7 +198,7 @@ namespace ResterauntWeb.Controllers
 
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("RestList");
 
         }
 
@@ -190,7 +211,7 @@ namespace ResterauntWeb.Controllers
                 crud.Delete(restToDelete);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Response.Write(ex.Message);
 

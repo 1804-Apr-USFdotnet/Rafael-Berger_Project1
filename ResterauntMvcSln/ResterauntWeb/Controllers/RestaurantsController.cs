@@ -92,15 +92,15 @@ namespace ResterauntWeb.Controllers
         public ActionResult Index(string option, string search)
         {
 
-            //if a user choose the radio button option as Subject  
+
             if (option == "Name")
             {
-                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+             
                 return View(crud.Table.Where(x => x.Name.StartsWith(search) || search == null).ToList());
             }
             else if (option == "City")
             {
-                return View(crud.Table.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+                return View(crud.Table.Where(x => x.City.StartsWith(search) || search == null).ToList());
             }
             else
             {
@@ -143,7 +143,8 @@ namespace ResterauntWeb.Controllers
       
 
             restVm.restaurants = crud.Table.Include(x => x.reviews).ToList();
-            restVm.Featuredrestaurants = featuredRestaurants.Top3Rest().ToList();
+             var ListOfIds = featuredRestaurants.Top3Rest().ToList().Select(x => x.Id);
+            restVm.Featuredrestaurants =   crud.Table.Where(x => ListOfIds.Contains(x.Id)).ToList();
 
 
             return View(restVm);

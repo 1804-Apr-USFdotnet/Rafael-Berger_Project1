@@ -58,8 +58,7 @@ namespace ResterauntWeb.Controllers
         {
             try
             {
-            
-               
+
                 ReviewsVm  reviewsVm = new ReviewsVm() {
                    
                 };
@@ -70,9 +69,6 @@ namespace ResterauntWeb.Controllers
                 
                     crud.Insert(review);
                 }
-
-
-                // TODO: Add insert logic here
 
 
                 return RedirectToAction("RestList", "Restaurants" ,null);

@@ -22,6 +22,7 @@ namespace Rest.DAL
             restCrud = new Crud<Restaurant>(db);
             revCrud = new Crud<Reviews>(db);
             List<Restaurant> restList = new List<Restaurant>();
+            //Restaurant rest = new Restaurant();
     
             try
             {
@@ -31,7 +32,20 @@ namespace Rest.DAL
                    {
                        RestId = g.Key,
                        Rating = g.Average()
+                 
                    }).DistinctBy(x => x.RestId).OrderByDescending(x => x.Rating).Take(3);
+                foreach (var item in TopRestauraunts)
+                {
+                    var rest = new Restaurant()
+                    {
+                        Id = item.RestId,
+                        AvgRating = item.RestId
+
+                        
+
+                    };
+                    restList.Add(rest);
+                }
 
              
 

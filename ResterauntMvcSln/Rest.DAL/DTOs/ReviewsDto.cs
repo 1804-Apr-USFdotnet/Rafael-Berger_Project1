@@ -12,7 +12,7 @@ namespace Rest.DAL.DTOs
 
         public int Id { get; set; }
         [Range(1, 10)]
-        public int Rating { get; set; }
+        public double Rating { get; set; }
         [StringLength(200)]
         [DataType(DataType.MultilineText)]
         public string Comments { get; set; }

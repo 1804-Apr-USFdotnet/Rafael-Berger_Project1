@@ -1,14 +1,23 @@
 ﻿@model IEnumerable<RestaurantData.Models.Restaurant>
 <table>
-
-    @foreach (var rest in Model)
+    <thead>
+        <tr> Name</tr>
+        <tr> City</tr>
+    </thead>
+    @foreach (var res in Model)
     {
 
-        <tr style="border:2px solid black">
-            <td>@rest.Name</td>
+       <tr style="border:2px solid black">
+            <td>
+                @res.Name
+            </td>
+            <td> @res.City</td>
+            <td>@res.AvgRating</td>
+           </tr>
+           
 
-            <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
-        </tr>
-    }
+        
+            }
 
-</table>
+
+    </table>

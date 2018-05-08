@@ -4,19 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @*<button id="search"> Search</button>
-<div id="searchResults">
-</div>
-<input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />*@
+    <div id="searchResults">
+    </div>
+    <input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />*@
 
 
-@using (Html.BeginForm("Index", "Restaurants", FormMethod.Get) )
+@using (Html.BeginForm("Index", "Restaurants", FormMethod.Get))
 {
     //the following are search options
 
-    <b>Search Option: <p>Name</p> </b>@Html.RadioButton("option", "Name")
-    <p>City</p> @Html.RadioButton("option", "city")
+<b>
+    Search Options:
+    <label for="Name"> Name</label>
+</b>@Html.RadioButton("option", "Name", htmlAttributes: new { @id = "Name" })
 
-    <p>Subject</p> @Html.TextBox("search")
+    <label for="City"> City</label>
+  @Html.RadioButton("option", "city", htmlAttributes: new { @id = "City"})
+
+     @Html.TextBox("search")
     <input type="submit"
            name="submit"
            value="Search" />
@@ -28,6 +33,7 @@
 
     <tr>
         <th> Name</th>
+        <th> City</th>
         <th> Average Rating</th>
     </tr>
 
@@ -37,6 +43,7 @@
             <td>
                 @rest.Name
             </td>
+            <td> @rest.City</td>
             <td>@rest.AvgRating</td>
 
             <td>
@@ -58,14 +65,31 @@
 <br />
 <br />
 
-<h1> Most  popular Restaurants</h1>
+<h1> Top 3 Rated Restaurants</h1>
+<table class="table">
+    <thead>
+
+        <tr> Name</tr>
+        <tr> Average Rating</tr>
+    </thead>
+    @foreach (var item in Model.Featuredrestaurants)
+    {
+
+        <tr>
+        <td>
+            @item.Name
+        </td>
+        <td>@item.AvgRating</td>
+
+            </tr>
+    }
 
 
+    </table>
+    @section Scripts{
 
-@section Scripts{
 
-
-    <script>
+        <script>
 
 var url = '@Url.Action("DisplaySearchResults", "Restaurants")';
      $('#search').click(function () {
@@ -89,6 +113,6 @@ var url = '@Url.Action("DisplaySearchResults", "Restaurants")';
         })
 })
 
-    </script>
+        </script>
 
-}
+    }

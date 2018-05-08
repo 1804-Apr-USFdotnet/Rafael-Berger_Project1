@@ -14,7 +14,7 @@ namespace RestaurantData.Models
         public int Id { get; set; }
         [Required (ErrorMessage = "A Rating is required")]
         [Range(1, 10)]
-        public int Rating { get; set; }
+        public double Rating { get; set; }
         [StringLength(200)]
         [DataType(DataType.MultilineText)]
         public string Comments { get; set; }

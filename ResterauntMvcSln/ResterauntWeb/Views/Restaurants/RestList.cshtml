@@ -3,10 +3,10 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<button id="search"> Search</button>
+@*<button id="search"> Search</button>
 <div id="searchResults">
 </div>
-<input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />
+<input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />*@
 
 
 @using (Html.BeginForm("Index", "Restaurants", FormMethod.Get) )
@@ -22,26 +22,9 @@
            value="Search" />
 }
 <table class="table">
-    @using (Html.BeginForm("SearchResults", "Restaurants", FormMethod.Post))
-    {
 
 
-        @Html.LabelFor(m => m.Name);
-        @Html.TextBoxFor(m => m.Name);
-
-
-
-
-
-
-        <button class="btn btn-default" type="submit" value="Submit">submit </button>
-
-
-    }
-
-
-
-    @Html.DropDownListFor(m => m.SelectedMethod, Model.SortMethods, new { @id = "dropdown" })
+    @*@Html.DropDownListFor(m => m.SelectedMethod, Model.SortMethods, new { @id = "dropdown" })*@
 
     <tr>
         <th> Name</th>

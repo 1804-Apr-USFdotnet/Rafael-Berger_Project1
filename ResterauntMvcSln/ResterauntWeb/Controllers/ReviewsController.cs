@@ -75,7 +75,7 @@ namespace ResterauntWeb.Controllers
                 // TODO: Add insert logic here
 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("RestList", "Restaurants" ,null);
             }
             catch(Exception ex)
             {

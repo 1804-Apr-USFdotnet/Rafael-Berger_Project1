@@ -12,6 +12,7 @@ namespace RestaurantData.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required (ErrorMessage = "A Rating is required")]
         [Range(1, 10)]
         public int Rating { get; set; }
         [StringLength(200)]

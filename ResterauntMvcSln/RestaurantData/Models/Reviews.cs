@@ -21,7 +21,7 @@ namespace RestaurantData.Models
         public DateTime? Created { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? Modified { get; set; }
-
+        [Required]
         public virtual Restaurant Restaurant { get; set; }
     }
 }

@@ -206,6 +206,7 @@
     <Content Include="Views\Shared\SearchResults.cshtml" />
     <Content Include="Views\Reviews\AddReview.cshtml" />
     <Content Include="Views\Shared\EditReview.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

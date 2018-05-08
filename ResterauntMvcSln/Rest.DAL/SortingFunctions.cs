@@ -15,7 +15,7 @@ namespace Rest.DAL
         ICrud<Restaurant> crud;
         ICrud<Reviews> reviewCrud;
         IDbContext db;
-  
+
 
         public SortingFunctions()
         {

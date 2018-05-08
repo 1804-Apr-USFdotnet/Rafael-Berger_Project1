@@ -7,11 +7,41 @@
 <div id="searchResults">
 </div>
 <input type="text" class="form-control" id="Keyword" name="name" value="" placeholder="Search" />
+
+
+@using (Html.BeginForm("Index", "Restaurants", FormMethod.Get) )
+{
+    //the following are search options
+
+    <b>Search Option: <p>Name</p> </b>@Html.RadioButton("option", "Name")
+    <p>City</p> @Html.RadioButton("option", "city")
+
+    <p>Subject</p> @Html.TextBox("search")
+    <input type="submit"
+           name="submit"
+           value="Search" />
+}
 <table class="table">
+    @using (Html.BeginForm("SearchResults", "Restaurants", FormMethod.Post))
+    {
+
+
+        @Html.LabelFor(m => m.Name);
+        @Html.TextBoxFor(m => m.Name);
 
 
 
 
+
+
+        <button class="btn btn-default" type="submit" value="Submit">submit </button>
+
+
+    }
+
+
+
+    @Html.DropDownListFor(m => m.SelectedMethod, Model.SortMethods, new { @id = "dropdown" })
 
     <tr>
         <th> Name</th>
@@ -21,19 +51,22 @@
     @foreach (var rest in Model.restaurants)
     {
         <tr style="border:2px solid black">
-            <td>@rest.Name
+            <td>
+                @rest.Name
             </td>
             <td>@rest.AvgRating</td>
 
-       <td>     @foreach (var rev in rest.reviews)
-            {
-                @rev.Comments
-            }
+            <td>
+                @foreach (var rev in rest.reviews)
+                {
+                    @rev.Comments
+                }
 
             </td>
             <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
             <td>@Html.ActionLink("Add Review", "AddR", "Reviews", new { id = rest.Id }, null)</td>
             <td>@Html.ActionLink("Edit Resteraunt", "AddR", "Reviews", new { id = rest.Id }, null)</td>
+            <td>@Html.ActionLink("Delete Restaurant", "Delete", "Restaurants", new { id = rest.Id }, null)</td>
         </tr>
     }
 
@@ -54,20 +87,20 @@
 var url = '@Url.Action("DisplaySearchResults", "Restaurants")';
      $('#search').click(function () {
     //$("#Keyword").keydown(function ()    {
-  var SearchString = $('#Keyword').val();
-  $('#searchResults').load(url, { searchText: SearchString });
+         var SearchString = $('#Keyword').val();
+
+         $('#searchResults').load(url, { input: SearchString   })
         })
 
 
-
-
  $(document).ready(function () {
-            $("#dropdown").change(function () {
+            $("#searh").click(function () {
                 $.ajax({
-                    type: 'Get',
+                    type: 'POST',
                     url: '@Url.Action("GetSortMethod", "Restaurants")',
-                    data:{ MV: $('#dropdown').val() },
+                    data:{ mv: $('#dropdown').val(), input : $('#Keyword').val() },
                     sucess: {
+
                     }
         });
         })

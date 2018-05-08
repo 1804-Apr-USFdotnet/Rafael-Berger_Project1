@@ -109,10 +109,10 @@ namespace ResterauntWeb.Controllers
         }
 
         // GET: Reviews/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
 
         // POST: Reviews/Delete/5
         [HttpPost]

@@ -51,6 +51,10 @@
     <Compile Include="Migrations\201805071456216_Initial.Designer.cs">
       <DependentUpon>201805071456216_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805072032131_Added Cascading.cs" />
+    <Compile Include="Migrations\201805072032131_Added Cascading.Designer.cs">
+      <DependentUpon>201805072032131_Added Cascading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IDbContext.cs" />
@@ -58,6 +62,7 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Reviews.cs" />
     <Compile Include="Models\SearchAndSortRestaurants.cs" />
+    <Compile Include="Models\UserHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805071456216_Initial.resx">
       <DependentUpon>201805071456216_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805072032131_Added Cascading.resx">
+      <DependentUpon>201805072032131_Added Cascading.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

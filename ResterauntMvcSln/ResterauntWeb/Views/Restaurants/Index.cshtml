@@ -1,0 +1,14 @@
+﻿@model IEnumerable<RestaurantData.Models.Restaurant>
+<table>
+
+    @foreach (var rest in Model)
+    {
+
+        <tr style="border:2px solid black">
+            <td>@rest.Name</td>
+
+            <td>@Html.ActionLink("Details", "Details", new { id = rest.Id })</td>
+        </tr>
+    }
+
+</table>

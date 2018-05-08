@@ -29,31 +29,104 @@ namespace ResterauntWeb.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult GetSortMethod(RestaurantVm mv)
+
+
+      [HttpPost]
+        public List<Restaurant> GetUserInput(RestaurantVm mv , string input )
         {
-            string SelectedValue = mv.SelectedMethod;
+             SearchAndSortRestaurants Search = new SearchAndSortRestaurants();
+
+            var mode = mv.SelectedMethod;
+            List < RestaurantVm > restvm = new List<RestaurantVm>();
+            var rest = crud.Table.ToList();
+            try
+            {
+                restvm = rest.ConvertAll(x => new RestaurantVm{ Id = x.Id });
+
+                switch (mode)
+                {
+                    case "Name":
+                        return Search.SearchResturant(input, rest);
+
+                }
+
+            }
+            catch (Exception)
+            {
 
 
+            }
+            return rest;
 
-            //switch (SelectedValue)
-            //{
-            //    case "Name":
-            //     SortByName
+        }
+    
 
-            //    default:
 
-            //        break;
-            //}
-            return View(mv);
+    [HttpPost]
+        public string GetSortMethod(RestaurantVm mv, string input)
+        {
+            string SelectedValue = string.Empty;
+            TempData["SortMethod"] = mv.SelectedMethod;
+            try
+            {
+                SelectedValue  = mv.SelectedMethod;
+          
+               
+
+            }
+            catch(Exception ex)
+            {
+
+
+            }
+            return SelectedValue;
 
         }
 
-        public ActionResult DisplaySearchResults(List<Restaurant> Rest)
+        public ActionResult SearchResults(RestaurantVm r)
         {
-            RestaurantVm rest = new RestaurantVm();
-        
-            return PartialView("SearchResults", rest);
+
+            return PartialView("SearchResults", r); 
+        }
+
+        public ActionResult Index(string option, string search)
+        {
+
+            //if a user choose the radio button option as Subject  
+            if (option == "Name")
+            {
+                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                return View(crud.Table.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+            }
+            else if (option == "City")
+            {
+                return View(crud.Table.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+            }
+            else
+            {
+
+                return View(crud.Table.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+            }
+
+        }
+        [HttpPost]
+        public ActionResult SearchResult(RestaurantVm restvm)
+        {
+ 
+            List<Restaurant> rest = new List<Restaurant>();
+            SearchAndSortRestaurants Search = new SearchAndSortRestaurants();
+            rest = crud.Table.ToList();
+            rest = Search.SearchResturant(restvm.Name, rest);
+
+
+            foreach (var item in rest)
+            {
+                restvm.Id = item.Id;
+                restvm.Name = item.Name;
+
+            }
+
+            return RedirectToAction("SearchResults");
         }
 
         public ActionResult RestList()
@@ -70,7 +143,7 @@ namespace ResterauntWeb.Controllers
       
 
             restVm.restaurants = crud.Table.Include(x => x.reviews).ToList();
-            restVm.Featuredrestaurants = featuredRestaurants.FeaturedRest().ToList();
+            restVm.Featuredrestaurants = featuredRestaurants.Top3Rest().ToList();
 
 
             return View(restVm);
@@ -88,7 +161,7 @@ namespace ResterauntWeb.Controllers
         [HttpPost]
         public ActionResult Edit(int id)
         {
-
+            
             try
             {
 
@@ -105,6 +178,23 @@ namespace ResterauntWeb.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                Restaurant restToDelete = crud.Table.Where(x => x.Id == id).FirstOrDefault();
+                crud.Delete(restToDelete);
+
+            }
+            catch(Exception ex)
+            {
+                Response.Write(ex.Message);
+
+            }
+            return RedirectToAction("RestList");
         }
     }
 }

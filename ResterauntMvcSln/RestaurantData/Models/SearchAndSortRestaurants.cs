@@ -10,19 +10,18 @@ namespace RestaurantData.Models
     {
         public List<Restaurant> SearchResturant(string userInput, List<Restaurant> restList)
         {
-            List<Restaurant> searchResults = new List<Restaurant>();
-
+          
             try
             {
               
-                    rest.SearchResults = crud.Table.Where(x => x.Name.StartsWith(userInput)).DefaultIfEmpty().ToList();
+                  restList = restList.Where(x => x.Name.StartsWith(userInput)).DefaultIfEmpty().ToList();
             }
-            catch
+            catch(Exception ex)
             {
 
 
             }
-            return searchResults;
+            return restList;
 
         }
 

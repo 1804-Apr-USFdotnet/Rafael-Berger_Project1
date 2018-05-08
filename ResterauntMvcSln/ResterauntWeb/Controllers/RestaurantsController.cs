@@ -51,7 +51,7 @@ namespace ResterauntWeb.Controllers
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Logger logger = LogManager.GetLogger("databaseLogger");
 
@@ -173,7 +173,10 @@ namespace ResterauntWeb.Controllers
             catch (Exception ex)
             {
 
+                Logger logger = LogManager.GetLogger("databaseLogger");
 
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
             }
             return RedirectToAction("RestList");
 
@@ -197,7 +200,7 @@ namespace ResterauntWeb.Controllers
 
 
             }
-            catch
+            catch(Exception ex)
             {
                 Logger logger = LogManager.GetLogger("databaseLogger");
 

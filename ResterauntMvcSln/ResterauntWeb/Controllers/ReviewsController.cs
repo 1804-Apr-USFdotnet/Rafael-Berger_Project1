@@ -114,7 +114,7 @@ namespace ResterauntWeb.Controllers
                 crud.Update(review);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 Logger logger = LogManager.GetLogger("databaseLogger");
 
@@ -140,7 +140,7 @@ namespace ResterauntWeb.Controllers
                 crud.Delete(review);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 Logger logger = LogManager.GetLogger("databaseLogger");
 

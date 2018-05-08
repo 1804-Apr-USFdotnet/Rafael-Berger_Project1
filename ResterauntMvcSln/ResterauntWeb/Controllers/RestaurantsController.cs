@@ -12,7 +12,7 @@ using RestaurantData;
 using Rest.DAL.DTOs;
 using System.Data.Entity;
 using RestaurantData.Models;
-
+using NLog;
 
 namespace ResterauntWeb.Controllers
 {
@@ -53,6 +53,10 @@ namespace ResterauntWeb.Controllers
             }
             catch (Exception)
             {
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
 
 
             }
@@ -76,7 +80,10 @@ namespace ResterauntWeb.Controllers
             }
             catch (Exception ex)
             {
+                Logger logger = LogManager.GetLogger("databaseLogger");
 
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
 
             }
             return SelectedValue;
@@ -192,7 +199,10 @@ namespace ResterauntWeb.Controllers
             }
             catch
             {
+                Logger logger = LogManager.GetLogger("databaseLogger");
 
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
 
             }
 
@@ -213,8 +223,10 @@ namespace ResterauntWeb.Controllers
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Logger logger = LogManager.GetLogger("databaseLogger");
 
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
             }
             return RedirectToAction("RestList");
         }

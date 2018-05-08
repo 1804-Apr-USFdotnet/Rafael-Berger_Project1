@@ -1,4 +1,5 @@
-﻿using Rest.DAL;
+﻿using NLog;
+using Rest.DAL;
 using Rest.DAL.Repositories;
 using RestaurantData;
 using RestaurantData.Models;
@@ -15,6 +16,9 @@ namespace ResterauntWeb.Controllers
     {
 
         ICrud<Reviews> crud;
+        ApplicationDbContext application = new ApplicationDbContext();
+
+        ICrud<Restaurant> resCrud;
         IDbContext db;
 
         public ReviewsController()
@@ -46,9 +50,10 @@ namespace ResterauntWeb.Controllers
         }
 
         // GET: Reviews/Create
-        public ActionResult AddReview(Reviews r)
+        public ActionResult AddReview( int id )
         {
-
+            ViewBag.id = id;
+            Reviews r = new Reviews();
             return View(r);
         }
 
@@ -62,21 +67,32 @@ namespace ResterauntWeb.Controllers
                 ReviewsVm  reviewsVm = new ReviewsVm() {
                    
                 };
-                
-                if(ModelState.IsValid)
+                Restaurant restaurant = new Restaurant();
+                application.Entry<Reviews>(review).Reference("Restaurant").Load();
+          var id =      resCrud.Table.Where(x => x.Name == review.Restaurant.Name).Select(x => x.Id).FirstOrDefault();
+                Reviews reviews = new Reviews()
                 {
+                    
+                    Restaurant = resCrud.Table.Where(x => x.Name.StartsWith(review.Restaurant.Name)).FirstOrDefault(),
+                    Rating = review.Rating,
+                    Comments = review.Comments,
+                   
+
+            };
 
                 
-                    crud.Insert(review);
-                }
+                    crud.Insert(reviews);
+                
 
 
                 return RedirectToAction("RestList", "Restaurants" ,null);
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.ReadLine();
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
 
                 return View();
             }
@@ -100,6 +116,10 @@ namespace ResterauntWeb.Controllers
             }
             catch
             {
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
                 return View();
             }
         }
@@ -122,6 +142,10 @@ namespace ResterauntWeb.Controllers
             }
             catch
             {
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
                 return View();
             }
         }

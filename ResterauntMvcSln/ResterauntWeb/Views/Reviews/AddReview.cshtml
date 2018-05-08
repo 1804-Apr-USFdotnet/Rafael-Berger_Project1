@@ -17,8 +17,7 @@
     {
 
         @*HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
-
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
 
         @Html.LabelFor(m => m.Rating);
         @Html.TextBoxFor(m => m.Rating, htmlAttributes: new { required = "required" });
@@ -27,6 +26,8 @@
 
         @Html.LabelFor(m => m.Comments);
         @Html.TextBoxFor(m => m.Comments, htmlAttributes: new { required = "required" });
+        @Html.LabelFor(m => m.Restaurant.Name);
+        @Html.TextBoxFor(m => m.Restaurant.Name)
 
 
         <button class="btn btn-default" type="submit" value="Submit">submit </button>
@@ -34,7 +35,7 @@
 
     }
 
-  <div class="form-control"> @Html.ActionLink("Restaurants", "RestList", "Restaurants")</div>
+    <div class="form-control"> @Html.ActionLink("Restaurants", "RestList", "Restaurants")</div>
 </body>
 </html>
 

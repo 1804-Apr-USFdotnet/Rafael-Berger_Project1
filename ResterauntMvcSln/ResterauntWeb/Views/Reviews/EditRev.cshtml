@@ -1,0 +1,22 @@
+﻿@model RestaurantData.Models.Reviews
+@{
+    ViewBag.Title = "EditReview";
+}
+
+<h2>EditReview</h2>
+
+
+@using (Html.BeginForm("Edit", "Reviews", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Rating)
+    @Html.TextBoxFor(m => m.Rating, htmlAttributes: new { required = "required" })
+@Html.HiddenFor(m => m.RestaurantId)
+<br />
+
+
+    @Html.LabelFor(m => m.Comments)
+    @Html.EditorFor(m => m.Comments, new { required = "required" })
+
+
+<button class="btn  btn-default" type="submit" value="submit"> submit</button>
+}

@@ -16,6 +16,7 @@ namespace RestaurantData.Models
         public int Id { get; set; }
         [Required]
         [StringLength(25, ErrorMessage = "Restaurant Name must be less than 25 charachters")]
+        [Display(Name="Restaraunt Name")]
         public string Name { get; set; }
         public string Street1 { get; set; }
         public string City { get; set; }

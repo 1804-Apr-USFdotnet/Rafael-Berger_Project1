@@ -59,6 +59,14 @@
     <Compile Include="Migrations\201805080143159_Changed Rating to Double.Designer.cs">
       <DependentUpon>201805080143159_Changed Rating to Double.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805080633532_Something should work.cs" />
+    <Compile Include="Migrations\201805080633532_Something should work.Designer.cs">
+      <DependentUpon>201805080633532_Something should work.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805080703123_Please work.cs" />
+    <Compile Include="Migrations\201805080703123_Please work.Designer.cs">
+      <DependentUpon>201805080703123_Please work.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IDbContext.cs" />
@@ -82,6 +90,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805080143159_Changed Rating to Double.resx">
       <DependentUpon>201805080143159_Changed Rating to Double.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080633532_Something should work.resx">
+      <DependentUpon>201805080633532_Something should work.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080703123_Please work.resx">
+      <DependentUpon>201805080703123_Please work.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
